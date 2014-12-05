@@ -1,2 +1,4 @@
 ---
 # defaults file for java
+
+java_oracle_version: 8

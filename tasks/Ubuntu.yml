@@ -1,0 +1,21 @@
+---
+# tasks file for java (Ubuntu specific)
+
+- name: Add Web Upd8 Oracle Java PPA
+  apt_repository: repo='ppa:webupd8team/java' update_cache=true state=present
+  tags: java
+
+- name: Accept Oracle Java license
+  debconf: >
+    name=oracle-java{{ java_oracle_version }}-installer
+    question='shared/accepted-oracle-license-v1-1'
+    value='true'
+    vtype='select'
+  tags: java
+
+- name: Install Oracle Java
+  apt: >
+    name=oracle-java{{ java_oracle_version}}-installer
+    update_cache=true
+    state=present
+  tags: java
