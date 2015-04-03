@@ -2,7 +2,7 @@
 # tasks file for java (Ubuntu specific)
 
 - name: Add Web Upd8 Oracle Java PPA
-  apt_repository: repo='ppa:webupd8team/java' update_cache=true state=present
+  apt_repository: repo='ppa:webupd8team/java' state=present
   tags: java
 
 - name: Accept Oracle Java license
