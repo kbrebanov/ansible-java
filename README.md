@@ -1,31 +1,56 @@
-Role Name
-=========
+java
+====
 
-A brief description of the role goes here.
+Installs Java
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role requires Ansible 1.4 or higher.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Name                           | Default | Description                                           |
+|--------------------------------|---------|-------------------------------------------------------|
+| java_oracle_version            | 8       | Version of Oracle Java to install                     |
+| java_oracle_install_jce_policy | false   | Enable/Disable installation of Oracle Java JCE policy |
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Install Oracle Java 8
+```
+- hosts: all
+  roles:
+    - { role: kbrebanov.java }
+```
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Install Oracle Java 8 and JCE policy
+```
+- hosts: all
+  roles:
+    - { role: kbrebanov.java, java_oracle_install_jce_policy: true }
+```
+
+Install Oracle Java 7
+```
+- hosts: all
+  roles:
+    - { role: kbrebanov.java, java_oracle_version: 7 }
+```
+
+Install Oracle Java 7 and JCE policy
+```
+- hosts: all
+  roles:
+    - { role: kbrebanov.java, java_oracle_version: 7, java_oracle_install_jce_policy: true }
+```
 
 License
 -------
@@ -35,4 +60,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Kevin Brebanov
