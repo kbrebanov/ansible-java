@@ -13,6 +13,8 @@ Role Variables
 
 | Name                           | Default | Description                                           |
 |--------------------------------|---------|-------------------------------------------------------|
+| java_implementation            | openjdk | Java implementation to install, openjdk or oracle     |
+| java_openjdk_version           | 8       | Version of OpenJDK Java to install                    |
 | java_oracle_version            | 8       | Version of Oracle Java to install                     |
 | java_oracle_install_jce_policy | false   | Enable/Disable installation of Oracle Java JCE policy |
 
@@ -24,32 +26,46 @@ None
 Example Playbook
 ----------------
 
-Install Oracle Java 8
+Install OpenJDK Java 8
 ```
 - hosts: all
   roles:
     - { role: kbrebanov.java }
 ```
 
+Install OpenJDK Java 7
+```
+- hosts: all
+  roles:
+    - { role: kbrebanov.java, java_openjdk_version: 7 }
+```
+
+Install Oracle Java 8
+```
+- hosts: all
+  roles:
+    - { role: kbrebanov.java, java_implementation: oracle }
+```
+
 Install Oracle Java 8 and JCE policy
 ```
 - hosts: all
   roles:
-    - { role: kbrebanov.java, java_oracle_install_jce_policy: true }
+    - { role: kbrebanov.java, java_implementation: oracle, java_oracle_install_jce_policy: true }
 ```
 
 Install Oracle Java 7
 ```
 - hosts: all
   roles:
-    - { role: kbrebanov.java, java_oracle_version: 7 }
+    - { role: kbrebanov.java, java_implementation: oracle, java_oracle_version: 7 }
 ```
 
 Install Oracle Java 7 and JCE policy
 ```
 - hosts: all
   roles:
-    - { role: kbrebanov.java, java_oracle_version: 7, java_oracle_install_jce_policy: true }
+    - { role: kbrebanov.java, java_implementation: oracle, java_oracle_version: 7, java_oracle_install_jce_policy: true }
 ```
 
 License

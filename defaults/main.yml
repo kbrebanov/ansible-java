@@ -1,5 +1,9 @@
 ---
 # defaults file for java
 
+java_implementation: openjdk
+
+java_openjdk_version: 8
+
 java_oracle_version: 8
 java_oracle_install_jce_policy: false
