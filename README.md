@@ -1,6 +1,8 @@
 java
 ====
 
+[![Ansible Galaxy](https://img.shields.io/badge/galaxy-kbrebanov.java-660198.svg)](https://galaxy.ansible.com/list#/roles/3309)
+
 Installs Java
 
 Requirements
