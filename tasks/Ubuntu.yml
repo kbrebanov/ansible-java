@@ -13,6 +13,7 @@
     name=openjdk-{{ java_openjdk_version }}-jdk
     update_cache=true
     state=present
+    cache_valid_time=3600
   when: java_implementation == "openjdk"
   tags: java
 
@@ -35,6 +36,7 @@
     name=oracle-java{{ java_oracle_version }}-installer
     update_cache=true
     state=present
+    cache_valid_time=3600
   when: java_implementation == "oracle"
   tags: java
 
@@ -43,6 +45,7 @@
     name=oracle-java{{ java_oracle_version }}-unlimited-jce-policy
     update_cache=true
     state=present
+    cache_valid_time=3600
   when: java_implementation == "oracle" and java_oracle_install_jce_policy
   tags: java
 
