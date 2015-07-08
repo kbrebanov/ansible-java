@@ -2,6 +2,8 @@
 # defaults file for java
 
 java_implementation: openjdk
+java_jre_only: false
+java_headless: false
 
 java_openjdk_version: 8
 
