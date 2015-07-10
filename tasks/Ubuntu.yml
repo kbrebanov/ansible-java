@@ -13,7 +13,15 @@
     name=openjdk-{{ java_openjdk_version }}-jdk
     update_cache=true
     state=present
-  when: java_implementation == "openjdk"
+  when: java_implementation == "openjdk" and not java_openjdk_jre_only|bool
+  tags: java
+
+- name: Install OpenJDK Java Runtime Environment only
+  apt: >
+    name=openjdk-{{ java_openjdk_version }}-jre{{ java_openjdk_headless|bool|ternary('-headless','') }}
+    update_cache=true
+    state=present
+  when: java_implementation == "openjdk" and java_openjdk_jre_only|bool
   tags: java
 
 - name: Add Web Upd8 Oracle Java PPA

@@ -17,6 +17,8 @@ Role Variables
 |--------------------------------|---------|-------------------------------------------------------|
 | java_implementation            | openjdk | Java implementation to install, openjdk or oracle     |
 | java_openjdk_version           | 8       | Version of OpenJDK Java to install                    |
+| java_openjdk_headless          | false   | Select 'Complete' vs 'Headless' install for OpenJDK   |
+| java_openjdk_jre_only          | false   | Select JDK vs Java Runtime Environment for OpenJDK    |
 | java_oracle_version            | 8       | Version of Oracle Java to install                     |
 | java_oracle_install_jce_policy | false   | Enable/Disable installation of Oracle Java JCE policy |
 
@@ -35,11 +37,11 @@ Install OpenJDK Java 8
     - { role: kbrebanov.java }
 ```
 
-Install OpenJDK Java 7
+Install OpenJDK Java 7 (headless, JRE-only)
 ```
 - hosts: all
   roles:
-    - { role: kbrebanov.java, java_openjdk_version: 7 }
+    - { role: kbrebanov.java, java_openjdk_version: 7, java_headless: true, java_jre_only: true }
 ```
 
 Install Oracle Java 8
