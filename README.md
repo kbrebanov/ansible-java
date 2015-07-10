@@ -17,8 +17,8 @@ Role Variables
 |--------------------------------|---------|-------------------------------------------------------|
 | java_implementation            | openjdk | Java implementation to install, openjdk or oracle     |
 | java_openjdk_version           | 8       | Version of OpenJDK Java to install                    |
-| java_headless                  | false   | Select 'Complete' vs 'Headless' install for OpenJDK   |
-| java_jre_only                  | false   | Select JDK vs Java Runtime Environment for OpenJDK    |
+| java_openjdk_headless          | false   | Select 'Complete' vs 'Headless' install for OpenJDK   |
+| java_openjdk_jre_only          | false   | Select JDK vs Java Runtime Environment for OpenJDK    |
 | java_oracle_version            | 8       | Version of Oracle Java to install                     |
 | java_oracle_install_jce_policy | false   | Enable/Disable installation of Oracle Java JCE policy |
 
