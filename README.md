@@ -19,6 +19,7 @@ Role Variables
 | java_openjdk_version           | 8       | Version of OpenJDK Java to install                    |
 | java_openjdk_headless          | false   | Select 'Complete' vs 'Headless' install for OpenJDK   |
 | java_openjdk_jre_only          | false   | Select JDK vs Java Runtime Environment for OpenJDK    |
+| java_openjdk_use_ppa           | true    | Add the OpenJDK-R Java PPA to repositories list       |
 | java_oracle_version            | 8       | Version of Oracle Java to install                     |
 | java_oracle_install_jce_policy | false   | Enable/Disable installation of Oracle Java JCE policy |
 

@@ -5,7 +5,7 @@
   apt_repository: >
     repo='ppa:openjdk-r/ppa'
     state=present
-  when: java_implementation == "openjdk"
+  when: java_implementation == "openjdk" and java_openjdk_use_ppa
   tags: java
 
 - name: Install OpenJDK Java
