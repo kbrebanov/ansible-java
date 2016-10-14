@@ -1,20 +1,20 @@
 java
 ====
 
-[![Ansible Role](https://img.shields.io/ansible/role/3309.svg)](https://galaxy.ansible.com/list#/roles/3309)
+[![Build Status](https://travis-ci.org/kbrebanov/ansible-java.svg?branch=master)](https://travis-ci.org/kbrebanov/ansible-java)
 
 Installs Java
 
 Requirements
 ------------
 
-This role requires Ansible 1.4 or higher.
+This role requires Ansible 1.9 or higher.
 
 Role Variables
 --------------
 
 | Name                           | Default | Description                                           |
-|--------------------------------|---------|-------------------------------------------------------|
+|:-------------------------------|:--------|:------------------------------------------------------|
 | java_implementation            | openjdk | Java implementation to install, openjdk or oracle     |
 | java_openjdk_version           | 8       | Version of OpenJDK Java to install                    |
 | java_openjdk_headless          | false   | Select 'Complete' vs 'Headless' install for OpenJDK   |
@@ -32,45 +32,61 @@ Example Playbook
 ----------------
 
 Install OpenJDK Java 8
-```
+```yaml
 - hosts: all
   roles:
-    - { role: kbrebanov.java }
+    - kbrebanov.java
 ```
 
 Install OpenJDK Java 7 (headless, JRE-only)
-```
+```yaml
 - hosts: all
+  vars:
+    java_openjdk_version: 7
+    java_headless: true
+    java_jre_only: true
   roles:
-    - { role: kbrebanov.java, java_openjdk_version: 7, java_headless: true, java_jre_only: true }
+    - kbrebanov.java
 ```
 
 Install Oracle Java 8
-```
+```yaml
 - hosts: all
+  vars:
+    java_implementation: oracle
   roles:
-    - { role: kbrebanov.java, java_implementation: oracle }
+    - kbrebanov.java
 ```
 
 Install Oracle Java 8 and JCE policy
-```
+```yaml
 - hosts: all
+  vars:
+    java_implementation: oracle
+    java_oracle_install_jce_policy: true
   roles:
-    - { role: kbrebanov.java, java_implementation: oracle, java_oracle_install_jce_policy: true }
+    - kbrebanov.java
 ```
 
 Install Oracle Java 7
-```
+```yaml
 - hosts: all
+  vars:
+    java_implementation: oracle
+    java_oracle_version: 7
   roles:
-    - { role: kbrebanov.java, java_implementation: oracle, java_oracle_version: 7 }
+    - kbrebanov.java
 ```
 
 Install Oracle Java 7 and JCE policy
-```
+```yaml
 - hosts: all
+  vars:
+    java_implementation: oracle
+    java_oracle_version: 7
+    java_oracle_install_jce_policy: true
   roles:
-    - { role: kbrebanov.java, java_implementation: oracle, java_oracle_version: 7, java_oracle_install_jce_policy: true }
+    - kbrebanov.java
 ```
 
 License
