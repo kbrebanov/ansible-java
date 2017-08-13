@@ -17,9 +17,3 @@
   when: java_implementation == "oracle"
   tags:
     - java
-
-- name: Redhat | set Java version as default
-  alternatives:
-    name: "java"
-    link: "/usr/bin/java"
-    path: "{{ java_home }}/jre/bin/java"

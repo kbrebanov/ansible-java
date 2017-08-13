@@ -6,8 +6,6 @@
   tags:
     - java
 
-- include: java-home.yml
-
 - include: CentOS.yml
   when: ansible_os_family == "RedHat"
   tags:
@@ -17,3 +15,11 @@
   when: ansible_os_family == "Debian"
   tags:
     - java
+
+- include: java-home.yml
+
+- name: set Java version as default
+  alternatives:
+    name: "java"
+    link: "/usr/bin/java"
+    path: "{{ java_home }}/jre/bin/java"
