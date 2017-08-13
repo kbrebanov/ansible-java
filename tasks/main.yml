@@ -9,11 +9,11 @@
 - include: java-home.yml
 
 - include: CentOS.yml
-  when: ansible_distribution == "CentOS"
+  when: ansible_os_family == "RedHat"
   tags:
     - java
 
 - include: Ubuntu.yml
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_os_family == "Debian"
   tags:
     - java
