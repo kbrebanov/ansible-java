@@ -6,6 +6,8 @@
   tags:
     - java
 
+- include: java-home.yml
+
 - include: CentOS.yml
   when: ansible_distribution == "CentOS"
   tags:

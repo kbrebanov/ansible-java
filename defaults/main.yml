@@ -8,5 +8,8 @@ java_openjdk_jre_only: false
 java_openjdk_headless: false
 java_openjdk_use_ppa: true
 
+## webupd ppa
 java_oracle_version: 8
 java_oracle_install_jce_policy: false
+## rhel from upstream
+java_oracle_archive_url: 'http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.rpm'
