@@ -9,3 +9,17 @@
 - name: set java_home
   set_fact:
     java_home: "{{ javasettings.stdout | default('') }}/.."
+
+- block:
+    - name: RedHat | get version from rpm
+      shell: "rpm -qa | grep jdk | sed 's@jdk\([0-9\.]*\)_\([0-9]*\)-\([0-9\.]*\)_\([0-9]*\)-.*$@\1_\2@'"
+      changed_when: false
+      register: javarpm
+
+    - debug: var=javarpm.stdout
+
+    - name: RedHat | set java_home from rpm version
+      set_fact:
+        java_home: "/usr/java/jdk{{ java_rpm }}/jre"
+
+  when: ansible_os_family == "RedHat" and java_implementation == "oracle"
