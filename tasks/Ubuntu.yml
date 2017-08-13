@@ -69,21 +69,3 @@
   when: java_implementation == "oracle" and java_oracle_install_jce_policy
   tags:
     - java
-
-- name: Set OpenJDK as default Java
-  become: yes
-  alternatives:
-    name: java
-    path: "{{ java_openjdk_path }}"
-  when: java_implementation == "openjdk"
-  tags:
-    - java
-
-- name: Set Oracle JDK as default Java
-  become: yes
-  alternatives:
-    name: java
-    path: "{{ java_oracle_path }}"
-  when: java_implementation == "oracle"
-  tags:
-    - java

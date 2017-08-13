@@ -18,8 +18,22 @@
 
 - include: java-home.yml
 
-- name: set Java version as default
+- set_fact:
+    java_path: "{{ java_openjdk_path }}"
+  when: java_implementation == "openjdk"
+  tags:
+    - java
+
+- set_fact:
+    java_path: "{{ java_oracle_path }}"
+  when: java_implementation == "oracle"
+  tags:
+    - java
+
+- name: Set default Java
+  become: yes
   alternatives:
-    name: "java"
-    link: "/usr/bin/java"
-    path: "{{ java_home }}/jre/bin/java"
+    name: java
+    path: "{{ java_path }}"
+  tags:
+    - java
