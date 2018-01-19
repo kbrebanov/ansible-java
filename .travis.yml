@@ -20,10 +20,10 @@ env:
 #     version: 6
 #     init: /sbin/init
 #     run_opts: ""
-#   - distribution: centos
-#     version: 7
-#     init: /usr/lib/systemd/systemd
-#     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+   - distribution: centos
+     version: 7
+     init: /usr/lib/systemd/systemd
+     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 services:
   - docker
@@ -63,6 +63,7 @@ script:
   # Playbook specific tests
   # ...
 
+after_script:
   # Clean up
   - docker stop "$(cat ${container_id})"
 
