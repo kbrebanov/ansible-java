@@ -18,22 +18,24 @@
 
 - include: java-home.yml
 
-- set_fact:
-    java_path: "{{ java_openjdk_path }}"
-  when: java_implementation == "openjdk"
-  tags:
-    - java
+- block:
+    - set_fact:
+        java_path: "{{ java_openjdk_path }}"
+      when: java_implementation == "openjdk"
+      tags:
+        - java
 
-- set_fact:
-    java_path: "{{ java_oracle_path }}"
-  when: java_implementation == "oracle"
-  tags:
-    - java
+    - set_fact:
+        java_path: "{{ java_oracle_path }}"
+      when: java_implementation == "oracle"
+      tags:
+        - java
 
-- name: Set default Java
-  become: yes
-  alternatives:
-    name: java
-    path: "{{ java_path }}"
-  tags:
-    - java
+    - name: Set default Java
+      become: yes
+      alternatives:
+        name: java
+        path: "{{ java_path }}"
+      tags:
+        - java
+  when: ansible_os_family == 'Debian'
