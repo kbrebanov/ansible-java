@@ -59,9 +59,10 @@ script:
   # Run the role/playbook again, checking to make sure it's idempotent
   - >
     docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/ansible-java/tests/test.yml ${ansible_extra_vars}
+    | tee /tmp/idempotency.log
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
+    || (echo 'Idempotence test: fail' && cat /tmp/idempotency.log && exit 1)
 
   # Playbook specific tests
   # ...
