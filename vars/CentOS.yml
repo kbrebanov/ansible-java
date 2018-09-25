@@ -1,2 +1,3 @@
 ---
 # vars file for java (CentOS specific)
+java_oracle_path: /usr/java/jdk{{ java_oracle_version_long }}/jre/bin/java

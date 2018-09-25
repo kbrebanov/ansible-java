@@ -1,2 +1,19 @@
 ---
 # tasks file for java (CentOS specific)
+
+- name: RedHat | Download Oracle JDK from upstream
+  get_url:
+    url: "{{ java_oracle_archive_url }}"
+    dest: /var/tmp
+    mode: '0400'
+    headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
+  tags:
+    - java
+
+- name: RedHat | Install Oracle JDK
+  yum:
+    name: "/var/tmp/{{ java_oracle_archive_url | basename }}"
+    state: present
+  when: java_implementation == "oracle"
+  tags:
+    - java
